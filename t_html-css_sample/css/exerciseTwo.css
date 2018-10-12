@@ -1,0 +1,22 @@
+h1{
+	color: blue;
+	font-size: 99px;
+}
+
+a{
+	color:black;
+	border-bottom: 10px solid red;
+}
+
+a:hover{
+	color: red;
+	border-bottom: 20px solid black;
+}
+
+p{
+	font-family: verdana;
+	font-size: 18px;
+	line-height: 1.5;
+	text-align: left;
+	text-indent: 36px;
+}
