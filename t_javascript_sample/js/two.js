@@ -1,0 +1,1 @@
+document.getElementById('title').textContent = "修改後的標題";
