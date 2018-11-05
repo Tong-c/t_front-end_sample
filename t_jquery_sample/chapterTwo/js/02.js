@@ -14,5 +14,15 @@ $(document).ready(function(){
         return this.hostname && this.hostname != location.hostname;
     }).addClass("external");
 
+    $(document).ready(function(){
+        $("td:contains(Henry)").nextAll().addClass("highlight");
+    });
+    $(document).ready(function(){
+        $("td:contains(Henry)").nextAll().addBack().addClass("highlight");
+    });
+    $(document).ready(function(){
+        $("td:contains(Henry)").parent().children().addClass("highlight");
+    });
+    
     
 });
