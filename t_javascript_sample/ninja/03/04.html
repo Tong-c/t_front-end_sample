@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>使用构造器设置通用函数</title>
+</head>
+<style>
+    #results li.pass {
+        color: green;
+    }
+
+    #results li.fail {
+        color: red;
+    }
+</style>
+
+<body>
+    <ul id="results"></ul>
+
+    <script>
+        function Ninja(){
+            this.skulk = function(){
+                return this;
+            }
+        }
+
+        var ninja1 = new Ninja();
+        var ninja2 = new Ninja();
+
+        assert(ninja1.skulk() === ninja1, "The 1st ninja is skuliking");
+        assert(ninja2.skulk() === ninja2, "The 2nd ninja is skulking");
+
+
+
+
+
+        function assert(value, desc) {
+            var li = document.createElement("li");
+            li.className = value ? "pass" : "fail";
+            li.appendChild(document.createTextNode(desc));
+            document.getElementById("results").appendChild(li);
+        }
+    </script>
+</body>
+
+</html>

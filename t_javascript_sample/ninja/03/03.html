@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>函数调用和方法调用之间的区别</title>
+</head>
+<style>
+    #results li.pass {
+        color: green;
+    }
+
+    #results li.fail {
+        color: red;
+    }
+</style>
+
+<body>
+    <ul id="results"></ul>
+
+    <script>
+        function creep() {
+            return this;
+        }
+        assert(creep() === window, "Creeping in the window");
+
+        var sneak = creep;
+        assert(sneak() === window, "Sneaking in the window");
+
+        var njnja1 = {
+            skulk : creep
+        };
+        assert(njnja1.skulk() === njnja1, "The 1st njnja is skulking");
+
+        var njnja2 = {
+            skulk : creep
+        }
+        assert(njnja2.skulk() === njnja2, "The 2nd njnja is skulking");
+
+
+
+
+
+        function assert(value, desc) {
+            var li = document.createElement("li");
+            li.className = value ? "pass" : "fail";
+            li.appendChild(document.createTextNode(desc));
+            document.getElementById("results").appendChild(li);
+        }
+    </script>
+</body>
+
+</html>

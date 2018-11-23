@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>證明函數相關內容</title>
+
+    <style>
+        #results li.pass {
+            color: green;
+        }
+
+        #results li.fail {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="results"></ul>
+
+    <script>
+
+            function isNimble() {
+                return true;
+            }
+            assert(typeof window.isNimble === "function", "isNimble() defined");
+            assert(isNimble.name === "isNimble", "isNimble() has a name");
+    
+            var canFly = function () {
+                return true;
+            };
+            assert(typeof window.canFly === "function", "canFly() defined");
+            assert(canFly.name === "", "canFly() has no name");
+    
+            window.isDeadly = function () {
+                return true;
+            }
+            assert(typeof window.isDeadly === "function", "isDeadly() defined");
+    
+            function outer() {
+                assert(typeof inner === "function", "inner() in scope before declaration");
+                function inner() { };
+                assert(typeof inner === "function", "inner() in scope after declaration");
+                assert(window.inner === undefined, "inner() not in global scope");
+            }
+            outer();
+            assert(window.inner === undefined, "inner() still not in global scope");
+
+            window.wieldSword = function swingsSword(){
+                return true;
+            }
+            assert(window.wieldSword.name === "swingsSword", "wieldSword's real name is swingsSword");
+
+    
+            function assert(value, desc) {
+                var li = document.createElement("li");
+                li.className = value ? "pass" : "fail";
+                li.appendChild(document.createTextNode(desc));
+                document.getElementById("results").appendChild(li);
+            }
+    
+        </script>
+</body>
+
+</html>

@@ -4,9 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Javascript 的斷言的一個簡單實現</title>
+    <script>
+        function assert(value, desc){
+            var li = document.createElement("li");
+            li.className = value ? "pass" : "fail";
+            li.appendChild(document.createTextNode(desc));
+            document.getElementById("results").appendChild(li);
+        }
+
+        window.onload = function(){
+            assert(true, "The test suite is running");
+            assert(false, "Fail!");
+        }
+
+    </script>
+
+    <style>
+        #results li.pass {
+            color: green;
+        }
+
+        #results li.fail{
+            color: red;
+        }
+    </style>
 </head>
+
 <body>
-    
+    <ul id="results"></ul>
 </body>
 </html>
