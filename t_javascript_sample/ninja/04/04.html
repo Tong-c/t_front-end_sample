@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>遞歸中的函數引用丟失</title>
+
+    <style>
+        #results li.pass {
+            color: green;
+        }
+
+        #results li.fail {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="results"></ul>
+
+    <script>
+        var ninja = {
+            chirp: function () {
+                return n > 1 ? this.chirp(n - 1) + "-chirp" : "chirp";
+            }
+        };
+
+        var samurai = { chirp: ninja.chirp };
+
+        ninja = {};
+
+        try {
+            assert(samurai.chirp(3) == "chirp-chirp-chirp", "Is this going to work?");
+        } 
+        catch (e) {
+            assert(false, "Uh, this isn't good! where'd ninja.chirp go ?");
+        }
+
+        function assert(value, desc) {
+            var li = document.createElement("li");
+            li.className = value ? "pass" : "fail";
+            li.appendChild(document.createTextNode(desc));
+            document.getElementById("results").appendChild(li);
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>存儲一組獨立的函數</title>
+
+    <style>
+        #results li.pass {
+            color: green;
+        }
+
+        #results li.fail {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="results"></ul>
+
+    <script>
+        var store = {
+            nextId: 1,
+            chche: {},
+            add: function (fn) {
+                if (!fn.id) {
+                    fn.id = store.nextId++;
+                    return !!(store.cache[fn.id] = fn);
+                }
+            }
+        };
+
+
+        function ninja(){}
+
+        assert(store.add(ninja), "Function was safely added.");
+        assert(!store.add(ninja), "But it was only added once");
+
+        function assert(value, desc) {
+            var li = document.createElement("li");
+            li.className = value ? "pass" : "fail";
+            li.appendChild(document.createTextNode(desc));
+            document.getElementById("results").appendChild(li);
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>使用apply()和call()方法指定函數上下文</title>
+</head>
+<style>
+    #results li.pass {
+        color: green;
+    }
+
+    #results li.fail {
+        color: red;
+    }
+</style>
+
+<body>
+    <ul id="results"></ul>
+
+    <script>
+        function juggle() {
+            var result = 0;
+            for (var n = 0; n < arguments.length; n++) {
+                result += arguments[n];
+            }
+            this.result = result;
+        }
+
+        var njnja1 = {};
+        var njnja2 = {};
+
+        juggle.apply(njnja1, [1, 2, 3, 4]);
+        juggle.call(njnja2, 5, 6, 7, 8);
+
+        assert(njnja1.result === 10, "juggled via apply");
+        assert(njnja2.result === 26, "juggled via call")
+
+        function assert(value, desc) {
+            var li = document.createElement("li");
+            li.className = value ? "pass" : "fail";
+            li.appendChild(document.createTextNode(desc));
+            document.getElementById("results").appendChild(li);
+        }
+    </script>
+</body>
+
+</html>

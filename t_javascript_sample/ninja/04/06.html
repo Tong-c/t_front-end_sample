@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>驗證內聯函數的標識</title>
+
+    <style>
+        #results li.pass {
+            color: green;
+        }
+
+        #results li.fail {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="results"></ul>
+
+    <script>
+        var ninja = function myNinja() {
+            assert(ninja == myNinja, "This function is named two things at once!");
+        }
+        ninja();
+        assert(typeof myNinja == "undefined", "But myNinja isn't defined outside of the function");
+
+        function assert(value, desc) {
+            var li = document.createElement("li");
+            li.className = value ? "pass" : "fail";
+            li.appendChild(document.createTextNode(desc));
+            document.getElementById("results").appendChild(li);
+        }
+
+    </script>
+</body>
+
+</html>

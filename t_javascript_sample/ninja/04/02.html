@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>使用命名函數發出啾啾聲</title>
+
+    <style>
+        #results li.pass {
+            color: green;
+        }
+
+        #results li.fail {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="results"></ul>
+
+    <script>
+        function chirp(n) {
+            return n > 1 ? chirp(n - 1) + '-chirp' : 'chirp';
+        }
+
+        assert(chirp(3) == 'chirp-chirp-chirp', 'calling the named function comes naturally');
+    
+        function assert(value, desc) {
+            var li = document.createElement("li");
+            li.className = value ? "pass" : "fail";
+            li.appendChild(document.createTextNode(desc));
+            document.getElementById("results").appendChild(li);
+        }
+
+    </script>
+</body>
+
+</html>
