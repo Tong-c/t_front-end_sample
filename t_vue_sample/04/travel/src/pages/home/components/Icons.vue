@@ -1,8 +1,8 @@
 <template>
     <div class="icons">
         <swiper>
-            <swiper-slide v-for="(page, index) of pages" :key="index">
-                <div class="icon" v-for="item of page" :key="item.id">
+            <swiper-slide v-for="(page, index) of list" :key="index">
+                <div class="icon" v-for="item of list" :key="item.id">
                     <div class="icon-img">
                         <img class="icon-img-content" :src="item.imgUrl">
                     </div>
@@ -16,51 +16,13 @@
 <script>
 export default {
   name: 'HomeIcons',
-  data () {
-    return {
-      iconList: [{
-        id: '0001',
-        imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png',
-        desc: '景点门票'
-      }, {
-        id: '0002',
-        imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/20/831d62d2e1c7be02.png',
-        desc: '名胜古迹'
-      }, {
-        id: '0003',
-        imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/f5/a963333e1fa802.png',
-        desc: '本地玩乐'
-      }, {
-        id: '0004',
-        imgUrl: 'https://img1.qunarzz.com/piao/fusion/1811/1d/c46140e32fffa502.png',
-        desc: '去哪甄选'
-      }, {
-        id: '0005',
-        imgUrl: 'http://img1.qunarzz.com/piao/fusion/1804/ff/fdf170ee89594b02.png',
-        desc: '开封必游'
-      }, {
-        id: '0006',
-        imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/76/eb88861d78fb9902.png',
-        desc: '动植物园'
-      }, {
-        id: '0007',
-        imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/20/831d62d2e1c7be02.png',
-        desc: '文化古迹'
-      }, {
-        id: '0008',
-        imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/50/26ffa31b56646402.png',
-        desc: '亲子游'
-      }, {
-        id: '0009',
-        imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/48/cb72b99b71974c02.png',
-        desc: '生活休闲'
-      }]
-    }
+  props: {
+    list: Array
   },
   computed: {
     pages () {
       const pages = []
-      this.iconList.forEach((item, index) => {
+      this.list.forEach((item, index) => {
         const page = Math.floor(index / 8)
         if (!pages[page]) {
           pages[page] = []
