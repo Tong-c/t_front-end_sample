@@ -1,6 +1,13 @@
 <template>
-    <div class="search">
-        <input class="search-input" type="text" placeholder="輸入城市名或拼音"/>
+    <div>
+        <div class="search">
+            <input class="search-input" type="text" placeholder="輸入城市名或拼音"/>
+        </div>
+        <div class="search-content">
+            <ul>
+                <li>123</li>
+            </ul>
+        </div>
     </div>
 </template>
 
@@ -27,4 +34,14 @@ export default {
             border-radius: .06rem;
             color: #666;
         }
+    .search-content {
+        z-index: 1;
+        overflow: hidden;
+        position: absolute;
+        top: 1.58rem;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: green;
+    }
 </style>
