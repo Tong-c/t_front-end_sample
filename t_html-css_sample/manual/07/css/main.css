@@ -57,3 +57,32 @@ h1 {
   margin: 0 -15px 20px -15px;
 }
 
+h2 {
+  font-size: 1.5em;
+  font-family: "Arial Narrow", Arial, Helvetica, sans-serif;
+  color: rgb(249, 107, 24);
+  border-top: 2px dotted rgb(141, 165, 22);
+  border-bottom: 2px dotted rgb(141, 165, 22);
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin: 15px 0 5px 0;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 30%;
+  float: right;
+  margin: 10px;
+  background-color: rgb(250, 235, 199);
+  padding: 10px 20px;
+  border: 1px dotted rgb(252, 101, 18);
+  border-top: 20px solid rgb(252, 101, 18);
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, .5);
+}
+
+.sidebar h2 {
+  border: none;
+  margin-top: 0;
+  padding: 0;
+}
